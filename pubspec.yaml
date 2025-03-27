@@ -24,6 +24,8 @@ dependencies:
       ref: main
   rxdart: ^0.28.0
   intl: 0.19.0
+  flutter_map: ^8.1.1
+  latlong2: ^0.9.1
 
 dev_dependencies:
   flutter_test:
@@ -34,3 +36,8 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   generate: true
+  fonts:
+    - family: Questrial
+      fonts:
+        - asset: assets/fonts/questrial.ttf
+

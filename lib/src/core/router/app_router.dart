@@ -39,7 +39,7 @@ class AppRouter {
         },
       ),
       GoRoute(
-        path: '/login',
+        path: '/test',
         builder: (BuildContext context, GoRouterState state) {
           return Login();
         },
@@ -51,7 +51,7 @@ class AppRouter {
         },
       ),
       GoRoute(
-        path: '/test',
+        path: '/login',
         builder: (BuildContext context, GoRouterState state) => Test(),
       ),
     ],
