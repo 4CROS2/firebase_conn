@@ -1,4 +1,6 @@
+import 'package:extensions/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -25,37 +27,50 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Form(
-        key: _formKey,
-        child: ListView(
-          children: <Widget>[
-            Text('login'),
-            TextFormField(
-              controller: _emailController,
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'llena este campo';
-                }
-                return null;
-              },
-            ),
-            TextFormField(
-              controller: _passwordController,
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'llena este campo';
-                }
-                return null;
-              },
-            ),
+      body: SafeArea(
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            children: <Widget>[
+              Align(
+                alignment: Alignment.center,
+                child: Text(
+                  'login'.capitalize(),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 20,
+                    fontFamily: '',
+                  ),
+                ),
+              ),
+              TextFormField(
+                controller: _emailController,
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'llena este campo';
+                  }
+                  return null;
+                },
+              ),
+              TextFormField(
+                controller: _passwordController,
+                validator: (String? value) {
+                  if (value == null || value.isEmpty) {
+                    return 'llena este campo';
+                  }
+                  return null;
+                },
+              ),
 
-            ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {}
-              },
-              child: Text('enviar'),
-            ),
-          ],
+              ElevatedButton(
+                onPressed: () {
+                  context.push('/test');
+                },
+                child: Text('enviar'),
+              ),
+            ],
+          ),
         ),
       ),
     );

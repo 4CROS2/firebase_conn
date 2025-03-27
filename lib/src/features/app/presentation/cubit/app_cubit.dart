@@ -19,7 +19,12 @@ class AppCubit extends Cubit<AppState> {
   late StreamSubscription<User?> _subscription;
 
   void _appSubscription() {
-    _subscription = _usecase.getUserState().listen(_onAuthenticated);
+    _subscription = _usecase.getUserState().listen(
+      _onAuthenticated,
+      onError: (Object object) {
+        _onUnAuthenticated();
+      },
+    );
   }
 
   void _onAuthenticated(User? user) {
