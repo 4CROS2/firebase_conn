@@ -2,27 +2,24 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_conn/src/features/auth/domain/usecase/auth_usecase.dart';
+import 'package:firebase_conn/src/features/app/domain/usecase/app_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'app_state.dart';
 
 class AppCubit extends Cubit<AppState> {
-  AppCubit({required AuthUsecase usecase})
+  AppCubit({required AppUsecase usecase})
     : _usecase = usecase,
       super(LoadingApp()) {
     _appSubscription();
   }
 
-  final AuthUsecase _usecase;
+  final AppUsecase _usecase;
 
   late StreamSubscription<User?> _subscription;
 
   void _appSubscription() {
-    _subscription = _usecase.getUserState().listen(
-      _onAuthenticated,
-    
-    );
+    _subscription = _usecase.getUserState().listen(_onAuthenticated);
   }
 
   void _onAuthenticated(User? user) {
